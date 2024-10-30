@@ -1,0 +1,11 @@
+spring:
+  Datasource:
+    url: jdbc:mysql://localhost:3306/GroceryDB
+    username: springstudent
+    password: springstudent
+    driverClassName: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    database-platform:
+    hibernate:
+      ddl-auto: update
