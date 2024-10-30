@@ -1,11 +1,18 @@
 spring:
   Datasource:
-    url: jdbc:mysql://localhost:3306/GroceryDB
-    username: springstudent
-    password: springstudent
+    url: jdbc:mysql://localhost:3306/grocerydb
+    username: *******
+    password: *******
     driverClassName: com.mysql.cj.jdbc.Driver
 
   jpa:
     database-platform:
     hibernate:
       ddl-auto: update
+
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
