@@ -74,12 +74,14 @@ public class GroceryService {
         if(!validOrder(orders)){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid Order , Please Retry!!!");
         }
+        double amount = 0;
         for(Order order : orders){
             GroceryItem item = groceryRepo.findById(order.getItemId()).get();
+            amount += (order.getQuantiy() * item.getPrice()) ;
             item.setAvailableQuantity(item.getAvailableQuantity() - order.getQuantiy());
             groceryRepo.save(item);
         }
-        return ResponseEntity.status(HttpStatus.ACCEPTED).body("Your Order has been Confirmed....Have a good day...");
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body("Pay "+ amount + " to confirm your Order . Have a Nice day...");
     }
 
     private boolean validOrder(List<Order> orders){
